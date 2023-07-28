@@ -1,30 +1,3 @@
-CREATE TABLE products (
-  id SERIAL PRIMARY KEY,
-  product_name VARCHAR(100) NOT NULL,
-  product_category VARCHAR(100) NOT NULL,
-  product_description TEXT NOT NULL,
-  product_price DECIMAL(10,2) NOT NULL,
-  product_stock INT NOT NULL DEFAULT 0,
-  product_image VARCHAR(100) NOT NULL
-);
-
-CREATE TABLE orders (
-  id SERIAL PRIMARY KEY,
-  order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  customer_email VARCHAR(100) NOT NULL,
-  total DECIMAL(10,2) DEFAULT 0
-);
-
-CREATE TABLE order_items (
-  id SERIAL PRIMARY KEY,
-  order_id INT NOT NULL,
-  product_id INT NOT NULL,
-  quantity INT NOT NULL,
-  total DECIMAL(10,2) NOT NULL,
-  FOREIGN KEY (order_id) REFERENCES orders(id),
-  FOREIGN KEY (product_id) REFERENCES products(id)
-);
-
 INSERT INTO products (product_name, product_category, product_description, product_price, product_stock, product_image) VALUES
 ('Fjallraven - Foldsack No. 1 Backpack', 'men clothing', 'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday', 109.95, 561, 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg'),
 ('Mens Casual Premium Slim Fit T-Shirts ', 'men clothing', 'Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing.', 22.3, 602, 'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg'),
